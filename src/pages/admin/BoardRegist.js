@@ -86,7 +86,6 @@ function BoardRegist() {
             console.log('[BoardRegistration] onClickBoardRegistrationHandler');
 
             const formData = new FormData();
-
             formData.append("boardTitle", form.boardTitle);
             formData.append("memberId", form.memberId);
 
@@ -99,15 +98,17 @@ function BoardRegist() {
             console.log(formData.getAll('boardTitle')) 
             console.log(formData.getAll('memberId')) 
             console.log(image)
-            console.log('[ProductRegistration] formData : ', formData.get("boardImage"));
+            console.log('[BoardRegistration] formData : ', formData.get("boardImage"));
 
             dispatch(callBoardRegistAPI({	// 상품 상세 정보 조회
                 form: formData
             }));
+
+            console.log(formData)
             
             alert('게시판으로 이동합니다.');
             navigate('/board', { replace: true });
-            window.location.reload();
+            // window.location.reload();
         } else if(!image) {
             alert('이미지를 등록해주세요.')
         } else if(form.boardTitle == '') {

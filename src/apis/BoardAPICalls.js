@@ -6,6 +6,30 @@ import {
     DELETE_BOARDS_MANAGEMENT
 } from '../modules/BoardModule.js';
 
+export const callBoardDeleteAPI = ({boardCode}) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8090/api/v2/boards/management/${boardCode}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "DELETE",
+            headers: {
+                // "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken") 
+            },
+            body: Number(boardCode)
+        })
+        .then(response => response.json());
+
+        console.log('[BoardAPICalls] callBoardDeleteAPI RESULT : ', result);
+        if(result.status === 200) {
+            console.log('[BoardAPICalls] callBoardDeleteAPI SUCCESS');
+            dispatch({ type: DELETE_BOARDS_MANAGEMENT,  payload: result.data });
+        }
+    };
+}
+
 export const callBoardListAPI = ({currentPage}) => {
     
     let requestURL;

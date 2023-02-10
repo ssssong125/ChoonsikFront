@@ -4,6 +4,7 @@ import Main from './pages/Main';
 import Board from './pages/Boards/Board';
 import BoardDetail from './pages/Boards/BoardDetail';
 import BoardRegist from './pages/admin/BoardRegist';
+import BoardUpdate from './pages/admin/BoardUpdate';
 import Login from './pages/member/Login';
 import Register from './pages/member/Register';
 import Error from './pages/Error';
@@ -19,6 +20,7 @@ function App() {
           <Route path="board" element={ <Board/>}/>
           <Route path="board/:boardCode" element={ <BoardDetail/>}/>
           <Route path="regist" element={ <BoardRegist/>}/>
+          <Route path="update/:boardCode" element={ <BoardUpdate/>}/>
           {/* <Route path="profile" element={ <Profile /> } /> */}
           <Route path="/login" element={ <Login/> }/>
           <Route path="/register" element={ <Register/> }/>

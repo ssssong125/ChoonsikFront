@@ -84,7 +84,7 @@ function Boards() {
             {/* 게시글 */}
             <div className={ BoardCSS.boardDiv }>
                 { 
-                    Array.isArray(boardList) && boardList.map((board) => (<ComponentBoard key={ board.boardCode } board={ board } />))
+                    Array.isArray(boardList) && boardList.map((board) => (<ComponentBoard key={ board.boardCode } board={ board } currentPage={ currentPage }/>))
                 }
             </div>
             {/* 페이징 버튼 */}
