@@ -1,0 +1,18 @@
+.boardDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.pagingBtn{
+    margin: 5px;
+    border-radius: 25px;
+    background-color: white;
+    font-weight: bold;
+}
+.pagingBtn:hover{
+    cursor: pointer;
+    background-color: burlywood;
+}

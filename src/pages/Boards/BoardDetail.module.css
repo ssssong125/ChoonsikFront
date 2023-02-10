@@ -1,0 +1,113 @@
+.DetailDiv{
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 50px; */
+    border: 7px solid #AA4700;
+    border-radius: 50px;
+    background-color: white;
+    text-align: center;
+    width: 50%;
+    height: 70vh;
+    margin: 0 auto;
+    padding-bottom: 2%;
+    padding-top: 5%;
+}
+.ImgDiv{
+    align-self: center;
+    width: 50%;
+    height: 70%;
+}
+.ImgDiv img {
+    align-self: center;
+    width: 100%;
+    height: 100%;
+}
+.editButton{
+    background-color: red;
+    width: 250px;
+    height: 80px;
+    border: none;
+    font-size: 2em;
+    border-radius: 50px;
+    vertical-align: middle;
+    margin-left: 10%;
+    float: left;
+}
+.closeButton {
+    background-color: #FFE661;
+    width: 250px;
+    height: 80px;
+    border: none;
+    font-size: 2em;
+    border-radius: 50px;
+    vertical-align: middle;
+    margin-right: 10%;
+    float: right;
+}
+.DivInButton{
+    display: flex;
+    flex-direction: row;
+    vertical-align: bottom;
+    width: 300px;
+    height: 80px;
+}
+.DivInButton span {
+    /* display: inline-block; */
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 100%;
+    margin-left: 10%;
+}
+
+/* .DetailDiv div{
+    width: 500px;
+    height: 350px;
+}
+.imgDiv{
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.imgDiv img {
+    margin: 5px;
+    width: 70%;
+    height: 80%;
+}
+.imgDiv button {
+    margin: 5px;
+    height: 8%;
+    width: 80%;
+}
+.descriptionDiv{
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.descriptionTable{ 
+    width: 80%;
+    height: 80%;
+}
+.reviewBtn{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 100%;
+    border-radius: 25px;
+    background-color: white;
+    font-weight: bold;
+}
+.productBuyBtn{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 100%;
+    border-radius: 25px;
+    background-color: white;
+    font-weight: bold;
+} */

@@ -1,0 +1,94 @@
+.backgroundDiv{
+    width: 99%;
+    height: 84vh;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column; /*수평 정렬*/
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+.loginDiv{    
+    height: 60vh;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; /*수평 정렬*/
+    align-items: center;
+    /* justify-content: center; */
+    margin: 0;
+    margin-left: 20px;
+    padding: 0;
+    background-color: white;
+    border: 5px solid #AA4700;
+    border-radius: 15px;    
+}
+.loginDiv input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 250px;
+    border-radius: 10px;
+    text-indent: 10px;
+    border: 3px solid #AA4700;
+}
+/* .loginDiv button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 250px;
+    border-radius: 25px;
+    background-color: white;
+    font-weight: bold;
+} */
+.logoDiv {
+    text-align: center;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+}
+.loginLogo {
+    height: 150px;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+.loginButton{
+    background-color: #FFE661;
+    width: 200px;
+    height: 80px;
+    border: none;
+    font-size: 2em;
+    border-radius: 50px;
+    vertical-align: middle;
+    margin-left: 10%;
+    float: left;
+}
+.signInButton{
+    background-color: #61FF84;
+    width: 220px;
+    height: 80px;
+    border: none;
+    font-size: 2em;
+    border-radius: 50px;
+    vertical-align: middle;
+    margin-left: 10%;
+    float: left;
+}
+.DivInButton {
+    /* display: flex; */
+    display: flex;
+    flex-direction: row;
+    vertical-align: bottom;
+    width: 300px;
+    height: 80px;
+}
+.DivInButton span{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.divInButton>img {
+    height: 100%;
+}
+.loginDiv button:hover{
+    border: 3px solid black;
+}

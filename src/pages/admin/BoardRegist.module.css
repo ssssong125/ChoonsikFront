@@ -1,0 +1,153 @@
+.backgroundDiv{
+    width: 99%;
+    height: 84vh;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column; /*수평 정렬*/
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+.registDiv{    
+    height: 85vh;
+    width: 62vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; /*수평 정렬*/
+    align-items: center;
+    /* justify-content: center; */
+    margin: 0;
+    margin-left: 20px;
+    padding: 0;
+    background-color: white;
+    border: 5px solid #AA4700;
+    border-radius: 15px;    
+}
+.boardImageDiv{
+    /* border: #AA4700 solid 3px; */
+    border: black solid 3px;
+    /* background-color: #AA4700; */
+    display: flex;
+    margin-top: 5%;
+    width: 400px;
+    height: 400px;
+}
+.previewImage{
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+.plusDiv{
+    display: inline-block;
+    font-size: 7em;
+    margin: auto;
+    margin-bottom: 35%;
+}
+.DivInButton {
+    /* display: flex; */
+    display: flex;
+    flex-direction: row;
+    vertical-align: bottom;
+    width: 300px;
+    height: 80px;
+}
+.registButton{
+    background-color: #FFE661;
+    width: 200px;
+    height: 80px;
+    border: none;
+    font-size: 2em;
+    border-radius: 50px;
+    vertical-align: middle;
+    float: left;
+    margin-bottom: 5%;
+}
+.DivInButton span{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.divInButton>img {
+    height: 100%;
+}
+.registDiv button:hover{
+    border: 3px solid black;
+}
+.boardTitleInput{
+    width: 400px;
+    border: none;
+    border-bottom: 3px black solid;
+    font-size: 2em;
+    text-align: center;
+}
+.boardTitleInput:focus{
+    border: none;
+    outline: none;
+    border-bottom: 3px #FFE661 solid;
+}
+
+
+
+
+/* .boardSection{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+}
+.boardInfoDiv{
+    display: flex;
+    width: 350px;
+}
+.productInfoInput {    
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    background-color: white;
+    text-indent: 0.5em;
+}
+.boardInfoDiv table {
+    width: 100%;
+}
+.textAreaStyle {
+    width: 100%;
+    height: 6.25em;
+    border: 1px solid black;
+    border-radius: 10px;
+    resize: none;
+}
+.productButtonDiv{
+    display: flex;
+    justify-content: flex-end;
+}
+.productButtonDiv button{
+    margin: 5px;    
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 25px;
+    width: 150px;
+    border-radius: 25px;
+    background-color: white;
+    font-weight: bold;
+}
+.boardImageDiv{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.productImage{
+    margin-top: 5px;
+    width: 80%;
+    height: 90%;    
+}
+.productImageButton{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 150px;
+    border-radius: 25px;
+    background-color: white;
+    font-weight: bold;
+} */
