@@ -53,6 +53,8 @@ export const callLoginAPI = ({form}) => {
         console.log('[MemberAPICalls] callLoginAPI RESULT : ', result);
         if(result.status === 200){
             window.localStorage.setItem('accessToken', result.data.accessToken);            
+        } else {
+            alert(result.message)
         }
         dispatch({ type: POST_LOGIN,  payload: result });
     };

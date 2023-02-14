@@ -5,14 +5,45 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+    font-size: 1.8em;
 }
 .pagingBtn{
     margin: 5px;
     border-radius: 25px;
     background-color: white;
     font-weight: bold;
+    /* height: 21px; */
+    height: 50px;
+    width: 50px;
+    font-size: 40px;
+    border: none;
+    background: none;
 }
 .pagingBtn:hover{
     cursor: pointer;
     background-color: burlywood;
+}
+.pagingDiv{
+    display: flex;
+    list-style-type: none;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.divInButton{
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* vertical-align: bottom; */
+    /* height: 100%; */
+}
+.divInButton img {
+    height: 65px;
+    /* height: 100%; */
+    /* position: fill; */
+    /* padding-bottom: 50px; */
+    /* object-fit: cover; */
+}
+.choonsikBtn{
+    border: none;
+    background: none;
 }

@@ -22,18 +22,30 @@ function BoardDetail() {
         // eslint-disable-next-line
     }, []);
 
+    // 리덕스를 이용하기 위한 디스패처, 셀렉터 선언
+    const isLogin = window.localStorage.getItem('accessToken');    // Local Storage 에 token 정보 확인
+
+    let decoded = null;
+
+    if(isLogin !== undefined && isLogin !== null) {
+        const temp = decodeJwt(window.localStorage.getItem("accessToken"));
+        decoded = temp.auth[0];
+    }
+
     console.log(params.boardCode)
 
     const onClickEditHandler = () => {
 
         // params.boardCode
-        navigate(`/update/${params.boardCode}`);
+        navigate(`/update/${params.boardCode}`, { replace: true});
+        window.location.reload();
     }
 
     const onClickCloseHandler = () => {
         
         // params.currentPage
-        navigate(`/board`);
+        // navigate(`/boards/${currentPage}`);
+        navigate(-1);
     }
 
     const editButtonImgUrl = '/images/Wink.png';
@@ -48,12 +60,14 @@ function BoardDetail() {
                 <h3>{board.boardTitle}</h3>
                 <br/>
                 <div className={BoardDetailCSS.ButtonDiv}>
-                    <button className={BoardDetailCSS.editButton} onClick={onClickEditHandler}>
-                        <div className={BoardDetailCSS.DivInButton}>
-                            <img className={BoardDetailCSS.ButtonImg} src={editButtonImgUrl} alt='윙크하는 춘식이.png'/> 
-                            <span>Edit</span>
-                        </div>
-                    </button>
+                    { decoded ==="ROLE_ADMIN" && 
+                        <button className={BoardDetailCSS.editButton} onClick={onClickEditHandler}>
+                            <div className={BoardDetailCSS.DivInButton}>
+                                <img className={BoardDetailCSS.ButtonImg} src={editButtonImgUrl} alt='윙크하는 춘식이.png'/> 
+                                <span>Edit</span>
+                            </div>
+                        </button>
+                    }
                     <button className={BoardDetailCSS.closeButton} onClick={onClickCloseHandler}>
                         <div className={BoardDetailCSS.DivInButton}>
                             <img className={BoardDetailCSS.ButtonImg} src={closeButtonImgUrl} alt='윙크하는 춘식이.png'/> 

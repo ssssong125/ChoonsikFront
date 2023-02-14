@@ -1,8 +1,8 @@
 import LoginCSS from './Login.module.css';
+import { Navigate } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { Navigate } from "react-router-dom";
 
 import {
     callLoginAPI
@@ -29,7 +29,7 @@ function Login() {
             navigate("/", { replace: true });
         }
     } // eslint-disable-next-line
-    ,[loginMember]);
+    , [loginMember]);
     
     // 로그인 상태일 시 로그인페이지로 접근 방지
     if(loginMember.length > 0) {
@@ -38,6 +38,7 @@ function Login() {
     }
 
     const onChangeHandler = (e) => {
+
         setForm({
             ...form,
             [e.target.name]: e.target.value
@@ -55,6 +56,14 @@ function Login() {
         dispatch(callLoginAPI({	// 로그인
             form: form
         }));
+    }
+
+    // 검색 엔터키 핸들러 
+    const onEnterkeyHandler = (e) => {
+        if (e.key === 'Enter') {
+
+            onClickLoginHandler()
+        }
     }
 
     const loginLogo = '/images/ChoonsikFace.png';
@@ -78,10 +87,12 @@ function Login() {
                                     placeholder="아이디" 
                                     autoComplete='off'
                                     onChange={ onChangeHandler }
+                                    onKeyUp={ onEnterkeyHandler }
+                                    autoFocus
                                 />
                             </td>
                         </tr>
-                        <br></br>
+                        <br/>
                         <tr>
                             <td style={{textAlign: 'center'}}><strong>Password</strong></td>
                             <td colSpan={3}>
@@ -91,10 +102,11 @@ function Login() {
                                     placeholder="패스워드" 
                                     autoComplete='off'
                                     onChange={ onChangeHandler }
+                                    onKeyUp={ onEnterkeyHandler }
                                 />
                             </td>
                         </tr>
-                        <br></br>
+                        <br/>
                         <tr>
                             <td colSpan={2}>
                                 <button

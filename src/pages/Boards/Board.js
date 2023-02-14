@@ -11,32 +11,28 @@ import {
 
 function Boards() {
 
+    const [currentPage, setCurrentPage] = useState(1);
     // 리덕스를 이용하기 위한 디스패처, 셀렉터 선언
     const dispatch = useDispatch();
     const boards = useSelector(state => state.boardReducer); 
     const boardList = boards.data;
     const pageInfo = boards.pageInfo;
+    const pageNumber = [];
 
-   // const [start, setStart] = useState(0);
-   const [currentPage, setCurrentPage] = useState(1);
-   //const [pageEnd, setPageEnd] = useState(1);
+    useEffect(() => {
+        
+        dispatch(callBoardListAPI({
+            currentPage: currentPage
+        }));            
+        // eslint-disable-next-line
+    }, [currentPage]);
+
+    if(pageInfo) {
+        for(let i = pageInfo.startPage; i <= pageInfo.endPage ; i++) {
+            pageNumber.push(i);
+        }
+    }
     
-   const pageNumber = [];
-   if(pageInfo) {
-       // for(let i = 1; i <= pageInfo.pageEnd ; i++) {
-       for(let i = 1; i <= pageInfo.endPage ; i++) {
-           pageNumber.push(i);
-       }
-   }
-
-   useEffect(() => {
-       // setStart((currentPage - 1) * 5);            
-       dispatch(callBoardListAPI({
-           currentPage: currentPage
-       }));            
-       // eslint-disable-next-line
-   }, [currentPage]);
-
     const isLogin = window.localStorage.getItem('accessToken');
     let decoded = null;
     let expire = new Date();
@@ -47,8 +43,8 @@ function Boards() {
         decoded = temp.auth[0];
         expire = new Date(temp.exp * 1000);
 
-        console.log(`만료시간 : ${expire}`)
-        console.log(`현재시간 : ${now}`)
+        // console.log(`만료시간 : ${expire}`)
+        // console.log(`현재시간 : ${now}`)
 
         if(now > expire) {
             alert('토큰이 만료됐습니다. 다시 로그인 해주세요.')
@@ -63,21 +59,7 @@ function Boards() {
         return <Navigate to="/login"/>
     }
 
-    // const temp = decodeJwt(window.localStorage.getItem("accessToken"));
-
-    // if(decoded !== "ROLE_ADMIN" || decoded !== "ROLE_USER") {
-    // if(decoded === null) {
-    // if(decoded === null || Number((expire.toStrnig).substring(0, 9)) < Number((now.toString).substring(0, 9))) {
-    // if(decoded === null || expire < now) {
-    // if(decoded === null || now > expire) {
-    // alert('게시글을 보려면 먼저 로그인을 해주세요.')
-
-    // console.log(`boardList : ${boardList}`)
-    // console.log(`boardList`)
-    // console.log(boardList)
-    // console.log(`pageInfo`)
-    // console.log(pageInfo)
-    // console.log(`currentPage : ${currentPage}`)
+    const choonsikFaceImg = '/images/ChoonsikFace.png'
 
     return (
         <>
@@ -88,7 +70,7 @@ function Boards() {
                 }
             </div>
             {/* 페이징 버튼 */}
-            <div style={{ listStyleType: "none", display: "flex" }}>
+            <div className={BoardCSS.pagingDiv} style={{ }}>
                 { Array.isArray(boardList) &&
                 <button 
                     onClick={() => setCurrentPage(currentPage - 1)} 
@@ -99,13 +81,33 @@ function Boards() {
                 </button>
                 }
                 {pageNumber.map((num) => (
-                <li key={num} onClick={() => setCurrentPage(num)}>
+                // <li key={num} onClick={() => setCurrentPage(num)}>
+                //     <button
+                //         style={ currentPage === num ? {backgroundColor : 'orange' } : null}
+                //         className={ BoardCSS.pagingBtn }
+                //     >
+                //         {num}
+                //     </button>
+                // </li>
+                    
+                <li key={ num } onClick={() => setCurrentPage(num)}>
+                    { currentPage === num?
                     <button
-                        style={ currentPage === num ? {backgroundColor : 'orange' } : null}
-                        className={ BoardCSS.pagingBtn }
+                        className={BoardCSS.choonsikBtn}
                     >
-                        {num}
+                        <div className={BoardCSS.divInButton}>
+                             <img className={BoardCSS.choonsikFaceImg} src={choonsikFaceImg} alt='춘식이 얼굴.jpg'/> 
+                        </div>
                     </button>
+                    :
+                    <button
+                        className={BoardCSS.pagingBtn}
+                    >
+                        <div className={BoardCSS.divInButton}>
+                            <span>{num}</span> 
+                        </div>
+                    </button>
+                    }
                 </li>
                 ))}
                 { Array.isArray(boardList) &&

@@ -108,7 +108,7 @@ function BoardRegist() {
             
             alert('게시판으로 이동합니다.');
             navigate('/board', { replace: true });
-            // window.location.reload();
+            window.location.reload();
         } else if(!image) {
             alert('이미지를 등록해주세요.')
         } else if(form.boardTitle == '') {

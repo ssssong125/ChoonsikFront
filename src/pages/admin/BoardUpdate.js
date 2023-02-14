@@ -16,17 +16,14 @@ function BoardUpdate() {
     const dispatch = useDispatch();
     const params = useParams();
     const board  = useSelector(state => state.boardReducer);
-    // const productDetail  = useSelector(state => state.productReducer);  
     
     console.log('boardDetail', board);
     
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
-    // const [modifyMode, setModifyMode] = useState(false);
+    const [form, setForm] = useState({});
     const imageInput = useRef();
     const navigate = useNavigate();
-
-    const [form, setForm] = useState({});
 
     useEffect(        
         () => {
@@ -34,9 +31,10 @@ function BoardUpdate() {
 
             dispatch(callBoardDetailAPI({	
                 boardCode: params.boardCode
-            }));                     
+            })); 
         } // eslint-disable-next-line
-    ,[]);
+    , []);
+    
     console.log('[BoardUpdate] boardTitle : ', board.boardTitle);
 
     useEffect(() => {
@@ -84,27 +82,23 @@ function BoardUpdate() {
 
     const onClickImageUpload = () => {
 
-        // if(modifyMode){
-            imageInput.current.click();
-        // }
+        imageInput.current.click();
     }
-    
-    // const onClickModifyModeHandler = () => {    // 수정모드
 
-    //     setModifyMode(true);
-    //     setForm({
-    //         productCode: productDetail.productCode,
-    //         productName: productDetail.productName,
-    //         productPrice: productDetail.productPrice,
-    //         productOrderable: productDetail.productOrderable,
-    //         categoryCode: productDetail.categoryCode,
-    //         productStock: productDetail.productStock,
-    //         productDescription: productDetail.productDescription
-    //     });
-    // }
+    const onClickBoardDeleteHandler = () => {
+
+        console.log('[BoardDelete] onClickBoardDeleteHandler');
+
+        dispatch(callBoardDeleteAPI({ 
+            boardCode: board.boardCode
+        })); 
+        navigate(`/board`, { replace: true});
+        window.location.reload();
+    }
 
     // form 데이터 세팅    
     const onChangeHandler = (e) => {
+
         setForm({
             ...form,
             [e.target.name]: e.target.value,
@@ -113,20 +107,22 @@ function BoardUpdate() {
         });
     };
 
-    const onClickBoardDeleteHandler = () => {
+    // const notChangeHandler = () => {
 
-        console.log('[BoardDelete] onClickBoardDeleteHandler');
+    //     alert('onChangeHandler작동 안함')
+    //     // console.log(de)
 
-        dispatch(callBoardDeleteAPI({	// 상품 정보 업데이트
-            boardCode: board.boardCode
-        })); 
-        navigate(`/board`, { replace: true});
-        window.location.reload();
-    }
+    //     setForm({
+    //         ...form,
+    //         boardCode: board.boardCode,
+    //         boardTitle: board.boardTitle,
+    //         memberId: decoded
+    //     });
+    // }
 
     const onClickBoardUpdateHandler = () => {
 
-        if(image && form.boardTitle != '') {
+        if(form.boardTitle != undefined) {
             console.log('[BoardUpdate] onClickBoardUpdateHandler');
 
             const formData = new FormData();
@@ -137,20 +133,23 @@ function BoardUpdate() {
             if(image){
                 formData.append("boardImage", image);
             }
+            console.log('[BoardRegistration] formData : ', formData.get("boardCode"));
+            console.log('[BoardRegistration] formData : ', formData.get("boardTitle"));
+            console.log('[BoardRegistration] formData : ', formData.get("memberId"));
+            console.log('[BoardRegistration] formData : ', formData.get("boardImage"));
 
             dispatch(callBoardUpdateAPI({	// 상품 정보 업데이트
                 form: formData
             })); 
             navigate(`/board/${params.boardCode}`, { replace: true});
             window.location.reload();
-        } else if(!image) {
-            alert('이미지를 등록해주세요.')
-        } else if(form.boardTitle == '') {
-            alert('제목을 입력해주세요.')
+        } 
+        else {
+            alert('제목을 변경해주세요.')
         }
     }
 
-    const updateImg = '/images/Wink.png';
+    const updateButtonImg = '/images/Wink.png';
 
     return (
         <div className={BoardUpdateCSS.backgroundDiv}>
@@ -158,9 +157,7 @@ function BoardUpdate() {
                 <div className={ BoardUpdateCSS.boardImageDiv } onClick={ onClickImageUpload }>
                     <img 
                         className={ BoardUpdateCSS.previewImage } 
-                        // src={ imageUrl } 
                         src={ (imageUrl === null) ? board.imgUrl : imageUrl } 
-                        // src={ (imageUrl === null) ? alert('a') : console.log('b') } 
                         alt="preview"
                     />
                     <input
@@ -175,7 +172,6 @@ function BoardUpdate() {
                 <br></br>
                 <div>
                     <input 
-                        id='boardTitle'
                         name='boardTitle'
                         placeholder='Title'
                         // value={ (board? board.boardTitle : form.boardTitle) || ''}
@@ -184,7 +180,6 @@ function BoardUpdate() {
                         // value={ (form.boardTitle  != board.boardTitle? alert('a') : alert('b')) || ''}
                         className={ BoardUpdateCSS.boardTitleInput }
                         onChange={ onChangeHandler }
-                        // required
                     />
                 </div>
                 <br></br>
@@ -194,7 +189,7 @@ function BoardUpdate() {
                         onClick={ onClickBoardDeleteHandler }             
                     >
                         <div className={BoardUpdateCSS.DivInButton}>
-                            <img src={updateImg} alt='SignIn.jpg'/>
+                            <img src={updateButtonImg} alt='SignIn.jpg'/>
                             <span>Delete</span>
                         </div>
                     </button>
@@ -203,25 +198,11 @@ function BoardUpdate() {
                         onClick={ onClickBoardUpdateHandler }             
                         >
                         <div className={BoardUpdateCSS.DivInButton}>
-                            <img src={updateImg} alt='SignIn.jpg'/>
+                            <img src={updateButtonImg} alt='SignIn.jpg'/>
                             <span>Update</span>
                         </div>
                     </button>
                 </div>
-                <input 
-                    readOnly
-                    hidden
-                    // id='memberId'
-                    name='memberId'
-                    value={decoded}
-                />
-                <input 
-                    readOnly
-                    hidden
-                    // id='boardCode'
-                    name='boardCode'
-                    value={board.boardCode}
-                />
             </div>
         </div>
     )

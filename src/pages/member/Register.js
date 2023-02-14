@@ -69,6 +69,7 @@ function Register() {
                                     placeholder="아이디" 
                                     autoComplete='off'
                                     onChange={ onChangeHandler }
+                                    onInput='this.value=/^[a-z0-9_]{4,20}$/'
                                 />
                             </td>
                         </tr>
@@ -114,14 +115,9 @@ function Register() {
                         <br></br>
                     </tbody>
                 </table>
-
-
-
-
-
-                
                 <button
                     onClick = { onClickRegisterHandler }
+                    className = {RegisterCSS.registButton}
                 >   
                     <div className={RegisterCSS.DivInButton}>
                         <img src={signInImg} alt='SignIn.jpg'/>

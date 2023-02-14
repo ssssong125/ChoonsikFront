@@ -18,14 +18,14 @@ function App() {
         <Route path="/" element={ <Layout/> }>
           <Route index element={ <Main/> }/>
           <Route path="board" element={ <Board/>}/>
+          {/* <Route path="boards/:currentPage" element={ <Board/>}/> */}
           <Route path="board/:boardCode" element={ <BoardDetail/>}/>
           <Route path="regist" element={ <BoardRegist/>}/>
           <Route path="update/:boardCode" element={ <BoardUpdate/>}/>
-          {/* <Route path="profile" element={ <Profile /> } /> */}
           <Route path="/login" element={ <Login/> }/>
           <Route path="/register" element={ <Register/> }/>
+          <Route path="*" element={ <Error/> }/>
         </Route>
-        <Route path="*" element={ <Error/> }/>
       </Routes>
     </BrowserRouter>
   );
