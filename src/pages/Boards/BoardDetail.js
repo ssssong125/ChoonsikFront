@@ -37,8 +37,8 @@ function BoardDetail() {
     const onClickEditHandler = () => {
 
         // params.boardCode
-        navigate(`/update/${params.boardCode}`, { replace: true});
-        window.location.reload();
+        navigate(`/update/${params.boardCode}`);
+        // window.location.reload();
     }
 
     const onClickCloseHandler = () => {
