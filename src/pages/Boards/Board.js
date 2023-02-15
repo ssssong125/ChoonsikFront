@@ -73,6 +73,15 @@ function Boards() {
             <div className={BoardCSS.pagingDiv} style={{ }}>
                 { Array.isArray(boardList) &&
                 <button 
+                    onClick={() => setCurrentPage(1)} 
+                    disabled={currentPage === 1}
+                    className={ BoardCSS.pagingBtn }
+                >
+                    &lt;&lt;
+                </button>
+                }
+                { Array.isArray(boardList) &&
+                <button 
                     onClick={() => setCurrentPage(currentPage - 1)} 
                     disabled={currentPage === 1}
                     className={ BoardCSS.pagingBtn }
@@ -117,6 +126,15 @@ function Boards() {
                     disabled={currentPage === pageInfo.endPage  || pageInfo.total === 0}
                 >
                     &gt;
+                </button>
+                }
+                { Array.isArray(boardList) &&
+                <button 
+                    className={ BoardCSS.pagingBtn }
+                    onClick={() => setCurrentPage(pageInfo.maxPage)} 
+                    disabled={currentPage === pageInfo.endPage  || pageInfo.total === 0}
+                >
+                    &gt;&gt;
                 </button>
                 }
             </div>
