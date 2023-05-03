@@ -24,7 +24,12 @@
 ### 3. DB
 #### - MySQL 8.0.32 
 ------------  
+### 4. Framework
+#### - SpringBoot
+#### - Mybatis
+------------  
 ### 5. Tool
+#### - Intelli J
 #### - Visual Studio Code
 ------------  
 ### 6. ETC
