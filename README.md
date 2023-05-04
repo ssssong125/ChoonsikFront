@@ -33,3 +33,6 @@
 ### 6. ETC
 #### - Figma
 #### - Chrome DevTools
+------------  
+### 7. Monitoring and Logging
+#### - Elastic Stack (ELK)
